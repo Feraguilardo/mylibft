@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:05:35 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 18:25:40 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:46:18 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t destsize)
 	l_src = 0;
 	l_dst = 0;
 	i = 0;
+	if (!dst || !src)
+		return (0);
 	while (src[l_src] != '\0')
 		l_src++;
 	while (dst[l_dst] != '\0')

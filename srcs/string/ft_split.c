@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 10:02:42 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 18:37:19 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:37:20 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,12 @@ static void	*ft_freesplit(char **strsplit)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char **ft_create_words(char const *s, char c, char **strsplit)
 {
-	char	**strsplit;
 	int		i;
 	int		list;
 	size_t	lenstr;
 
-	strsplit = (char **)malloc(sizeof(char *) * (ft_c_wordssplit(s, c) + 1));
-	if (!strsplit || !s)
-		return (NULL);
 	i = 0;
 	list = 0;
 	while (s[i] != '\0')
@@ -91,6 +87,18 @@ char	**ft_split(char const *s, char c)
 	}
 	strsplit[list] = NULL;
 	return (strsplit);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**strsplit;
+
+	if (!s)
+		return (NULL);
+	strsplit = (char **)malloc(sizeof(char *) * (ft_c_wordssplit(s, c) + 1));
+	if (!strsplit)
+		return (NULL);
+	return (ft_create_words(s, c, strsplit));
 }
 /*Divido un STR en diferentes STRS por un C*/
 /*EX: HOLA MUNDO [A]=> "HOL\0" " MUNDO\0"*/

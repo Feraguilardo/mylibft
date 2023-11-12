@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:28:45 by feaguila          #+#    #+#             */
-/*   Updated: 2023/11/12 13:03:30 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/12 18:09:25 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_utoa(unsigned int nb)
 	char	*str;
 	int		len;
 
+	if (!nb)
+		return (NULL);
 	len = ft_len_utoa(nb);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)

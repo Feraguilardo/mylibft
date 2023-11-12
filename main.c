@@ -1,10 +1,33 @@
-#include "include/libft.h"
-#include "include/ft_printf.h"
+#include "heads/libft.h"
+#include "heads/ft_printf.h"
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	if (argc < 0)
+	size_t	num_elements;
+	size_t	element_size;
+	int		cmp;
+	int		*mem1;
+	int		*mem2;
+
+	if (argc != 2)
 		return (0);
-	ft_printf("%s\n", argv[1]);
+	num_elements = atoi(argv[1]);
+	element_size = sizeof(int);
+	mem1 = (int *)ft_calloc(num_elements, element_size);
+	mem2 = (int *)calloc(num_elements, element_size);
+	if(!mem1 || !mem2)
+		return (0);
+	cmp = memcmp(mem1, mem2, (atoi(argv[1]) * element_size));
+	printf("MEMCMP: %d\n", cmp);
+	if (cmp != 0)
+	{
+		free(mem1);
+		free(mem2);
+		printf("TODO MAL\n");
+		return (0);
+	}
+	free(mem1);
+	free(mem2);
+	printf("TODO OK\n");
 	return (0);
 }

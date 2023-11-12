@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 17:20:22 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 15:25:50 by feaguila         ###   ########.fr       */
+/*   Created: 2023/10/02 07:30:41 by feaguila          #+#    #+#             */
+/*   Updated: 2023/11/12 19:35:39 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int	ft_lstsize(t_list *lst)
 {
-	if (!lst || !new)
-		return ;
-	new -> next = *lst;
-	*lst = new;
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		i++;
+		lst = lst -> next;
+	}
+	return (i);
 }
-/*Apunta al nodo inicial*/
+/*Devuelve el SIZE de la una lista ~= LEN*/
 /*
-// int main(int argc, char **argv)
+// int	main(int argc, char ** argv)
 // {
 // 	int	i;
-// 	t_list	*mylst = NULL;
-// 	t_list	*printList = NULL;
-// 	t_list	*control = NULL;
+// 	t_list *mylst = NULL;
 
+// 	i = 1;
 // 	if (argc <= 1)
 // 		return (0);
-// 	i = 1;
 // 	while (i < argc)
 // 	{
 // 		t_list *newnode = malloc(sizeof(t_list));
@@ -41,18 +44,12 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 // 		ft_lstadd_front(&mylst, newnode);
 // 		i++;
 // 	}
-// 	printList = mylst;
-// 	control = mylst;
-// 	while (printList != NULL)
+// 	printf("SIZE => %d\n", ft_lstsize(mylst));
+// 	while (mylst != NULL)
 // 	{
-// 		printf("%s\n", (char *)printList -> content);
-// 		printList = printList -> next;
-// 	}
-// 	while (control != NULL)
-// 	{
-// 		free(control -> content);
-// 		free(control);
-// 		mylst = control;
+// 		printf("%s\n", (char *)mylst -> content);
+// 		free(mylst);
+// 		mylst = mylst -> next;
 // 	}
 // 	return (0);
 // }

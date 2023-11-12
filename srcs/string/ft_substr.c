@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:36:33 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 14:02:15 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:58:02 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	while (s[i] != '\0')
 		i++;
 	if (i <= start)
@@ -29,11 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	i = 0;
 	while (i < len)
-	{
-		substr[i] = s[start];
-		i++;
-		start++;
-	}
+		substr[i++] = s[start++];
 	substr[i] = '\0';
 	return (substr);
 }

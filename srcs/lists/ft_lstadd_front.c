@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 15:35:31 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 15:20:12 by feaguila         ###   ########.fr       */
+/*   Created: 2023/09/28 17:20:22 by feaguila          #+#    #+#             */
+/*   Updated: 2023/11/12 19:36:27 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*lstnew;
-
-	lstnew = malloc(sizeof(t_list));
-	if (!lstnew)
-		return (NULL);
-	lstnew -> content = content;
-	lstnew -> next = NULL;
-	return (lstnew);
+	if (!lst || !new)
+		return ;
+	new -> next = *lst;
+	*lst = new;
 }
-/* Añade contenido a un nuedo y apunta a NULL */
+/*Apunta al nodo inicial*/
 /*
-// int	main(int argc, char **argv)
+// int main(int argc, char **argv)
 // {
+// 	int	i;
 // 	t_list	*mylst = NULL;
 // 	t_list	*printList = NULL;
 // 	t_list	*control = NULL;
 
-// 	if (argc != 2)
+// 	if (argc <= 1)
 // 		return (0);
-// 	mylst = ft_lstnew(ft_strdup(argv[1]));
+// 	i = 1;
+// 	while (i < argc)
+// 	{
+// 		t_list *newnode = malloc(sizeof(t_list));
+// 		if (!newnode)
+// 			return (0);
+// 		newnode -> content = argv[i];
+// 		newnode -> next = NULL;
+// 		ft_lstadd_front(&mylst, newnode);
+// 		i++;
+// 	}
 // 	printList = mylst;
 // 	control = mylst;
 // 	while (printList != NULL)

@@ -1,51 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 18:13:38 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 18:54:50 by feaguila         ###   ########.fr       */
+/*   Created: 2023/09/28 15:35:31 by feaguila          #+#    #+#             */
+/*   Updated: 2023/11/12 19:35:48 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstnew(void *content)
 {
-	while (lst != NULL)
-	{
-		f(lst -> content);
-		lst = lst -> next;
-	}
-}
-/*Aplica una funcion sobre el contenido de una lista*/
-/*
-// static void	ft_printelement(void *content)
-// {
-// 	printf("%s\n", (char *)content);
-// }
+	t_list	*lstnew;
 
+	lstnew = malloc(sizeof(t_list));
+	if (!lstnew)
+		return (NULL);
+	lstnew -> content = content;
+	lstnew -> next = NULL;
+	return (lstnew);
+}
+/* Añade contenido a un nuedo y apunta a NULL */
+/*
 // int	main(int argc, char **argv)
 // {
-// 	int	i;
 // 	t_list	*mylst = NULL;
+// 	t_list	*printList = NULL;
 // 	t_list	*control = NULL;
 
-// 	if (argc <= 1)
+// 	if (argc != 2)
 // 		return (0);
-// 	i = 1;
-// 	while (i < argc)
-// 	{
-// 		ft_lstadd_back(&mylst, ft_lstnew(ft_strdup(argv[i])));
-// 		i++;
-// 	}
-// 	ft_lstiter(mylst, ft_printelement);
+// 	mylst = ft_lstnew(ft_strdup(argv[1]));
+// 	printList = mylst;
 // 	control = mylst;
+// 	while (printList != NULL)
+// 	{
+// 		printf("%s\n", (char *)printList -> content);
+// 		printList = printList -> next;
+// 	}
 // 	while (control != NULL)
 // 	{
-// 		mylst = mylst -> next;
 // 		free(control -> content);
 // 		free(control);
 // 		mylst = control;

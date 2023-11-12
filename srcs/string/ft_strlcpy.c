@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: fer <fer@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:38:38 by feaguila          #+#    #+#             */
-/*   Updated: 2023/10/03 13:26:08 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:47:20 by fer              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 
 	i = 0;
 	j = 0;
+	if (!dst || !src)
+		return (0);
 	while (src[i] != '\0')
 		i++;
 	if (destsize != 0)
