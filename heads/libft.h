@@ -6,7 +6,7 @@
 /*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:10:21 by feaguila          #+#    #+#             */
-/*   Updated: 2023/11/12 13:04:09 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:03:01 by feaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <ctype.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <string.h>
 
 /*   STRUCT   */
 typedef struct s_list

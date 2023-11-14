@@ -6,41 +6,11 @@
 /*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 09:08:30 by feaguila          #+#    #+#             */
-/*   Updated: 2023/11/14 15:27:16 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:07:19 by feaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-static size_t	ft_get_strlen(char *str)
-{
-	size_t	len;
-
-	if (!str)
-		return (free(str), str = NULL, 0);
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
-}
-
-char	*ft_get_strchr(char *str, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (free(str), str = NULL, NULL);
-	while (str[i] != '\0')
-	{
-		if (str[i] == (char)c)
-			return ((char *)&str[i]);
-		i++;
-	}
-	if (str[i] == (unsigned char) c)
-		return ((char *)&str[i]);
-	return (0);
-}
 
 char	*ft_get_strjoin(char *str, char *buffer)
 {
@@ -55,8 +25,8 @@ char	*ft_get_strjoin(char *str, char *buffer)
 			return (free(str), str = NULL, NULL);
 		str[0] = '\0';
 	}
-	i = ft_get_strlen(str);
-	j = ft_get_strlen(buffer);
+	i = ft_strlen(str);
+	j = ft_strlen(buffer);
 	new_str = malloc(sizeof(char) * ((i + j) + 1));
 	if (!new_str)
 		return (free(str), str = NULL, NULL);
@@ -104,7 +74,7 @@ char	*ft_new_line(char *str)
 		i++;
 	if (!str[i])
 		return (free(str), str = NULL, NULL);
-	new_str = malloc(sizeof(char) * (ft_get_strlen(str) + 1));
+	new_str = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	if (!new_str)
 		return (free(str), str = NULL, NULL);
 	i++;

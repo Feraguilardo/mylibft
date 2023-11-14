@@ -6,7 +6,7 @@
 /*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 09:07:43 by feaguila          #+#    #+#             */
-/*   Updated: 2023/11/14 15:27:17 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:05:49 by feaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_read_str(int fd, char *str)
 	nb_read = 1;
 	if (!buffer)
 		return (free(str), str = NULL, NULL);
-	while (nb_read > 0 && !ft_get_strchr(str, '\n'))
+	while (nb_read > 0 && !ft_strchr(str, '\n'))
 	{
 		nb_read = read(fd, buffer, BUFFER_SIZE);
 		if (nb_read > 0)

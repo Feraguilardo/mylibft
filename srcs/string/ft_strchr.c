@@ -6,7 +6,7 @@
 /*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:48:33 by feaguila          #+#    #+#             */
-/*   Updated: 2023/11/14 15:26:56 by feaguila         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:05:26 by feaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strchr(const char *str, int c)
 	}
 	if (str[i] == (unsigned char) c)
 		return ((char *)&str[i]);
-	return ((char *)0);
+	return (0);
 }
 /*Cuando se encuentra C en STR devuelve desde la posicion del puntero*/
 /*
