@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fer <fer@student.42.fr>                    +#+  +:+       +#+         #
+#    By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/12 13:12:12 by feaguila          #+#    #+#              #
-#    Updated: 2023/11/12 21:28:25 by fer              ###   ########.fr        #
+#    Created: 2023/11/14 15:25:54 by feaguila          #+#    #+#              #
+#    Updated: 2023/11/14 15:28:04 by feaguila         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME := libft.a
 
 GCC := gcc
 CFLAGS := -Wall -Wextra -Werror
-#CFLAGS	+=	-fsanitize=address
+#CFLAGS	+=	-fsanitize=addresss
 AR := ar -rcs
 RM := rm -fr
 MKD := mkdir -p
@@ -30,6 +30,13 @@ DIR_HEADS := heads/
 #DIR_DEPS := .deps/
 DIR_OBJS := .objs/
 DIR_SRCS := srcs/
+
+# **************************************************************************** #
+
+H_LIBFT := ./heads/libft.h
+H_PRINT := ./heads/ft_printf.h
+H_GNWLN := ./heads/get_next_line.h
+INC := $(H_LIBFT) $(H_PRINT) $(H_GNWLN)
 
 # **************************************************************************** #
 
@@ -88,27 +95,30 @@ vpath %.c $(D_CHECK_SRC) $(D_GLINE_SRC) $(D_LISTS_SRC) $(D_MEMOR_SRC) \
 
 INCLUDE := -I$(DIR_HEADS)
 OBJS := $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
-#DEPS := $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
+DEPS := $(SRCS:.c=.d)
 
 # **************************************************************************** #
 
-all: checkingsrcs $(DIR_OBJS) $(NAME)
+all: $(DIR_OBJS) $(NAME)
 
 $(DIR_OBJS):
 	$(MKD) $(DIR_OBJS)
+	clear
+	printf "$(YELLOW)➜ INITIALIZING OBJECT CREATOR$(WHITE)\n\n"
+
 
 #makelib:
 #	$(MAKE) -C libft
 
 $(DIR_OBJS)%.o : %.c $(MKF)
 	printf "$(CIAN)➜ Creating Objects: $(WHITE)$(notdir $@)\n"
-	$(GCC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-	sleep 0.2
+	$(GCC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
+	sleep 0.05
 
 $(NAME) : $(OBJS)
 	$(call show_progress)
 #	@cp ./libft/libft.a $(NAME)
-	$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS) $(INC)
 	sleep 1
 	printf "\n➜ $(NAME) CREATED $(BGREEN)[✔]\n"
 	sleep 0.3
@@ -146,7 +156,7 @@ re: fclean all
 
 .SILENT:
 
-#-include $(DEPS)
+-include $(DEPS)
 
 # **************************************************************************** #
 
@@ -212,7 +222,7 @@ define show_progress
 		((j = 1));\
 		while [[ $$j -le $(BAR_LEN) ]]; do \
 			if [[ $$j -le $$progress ]]; then \
-				printf "$(BGREEN)𐧾"; \
+				printf "$(BGREEN)░"; \
 			else \
 				printf " "; \
 			fi; \
@@ -237,7 +247,7 @@ define check_objects
 		while [ $$k -lt $${#files[@]} ]; do \
 			file="$${files[k]}"; \
 			printf "$(CIAN)➜ Checking Objects: $(WHITE)$$file\n "; \
-			sleep 0.5; \
+			sleep 0.05; \
 			((k = k + 1)); \
 		done; \
 		printf "\n\n$(WHITE)➜ Cheked Objects $(BGREEN)[✔]$(WHITE)\n"; \
@@ -262,7 +272,7 @@ define progress_remove
 		((j = 1));\
 		while [[ $$j -le $(BAR_LEN) ]]; do \
 			if [[ $$j -le $$progress ]]; then \
-				printf "$(BRED)𐧾"; \
+				printf "$(BRED)░"; \
 			else \
 				printf " "; \
 			fi; \

@@ -1,5 +1,19 @@
-#include "heads/libft.h"
-#include "heads/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feaguila <feaguila@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 15:26:12 by feaguila          #+#    #+#             */
+/*   Updated: 2023/11/14 15:26:26 by feaguila         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
+#include "libft.h"
+#include "ft_printf.h"
 
 int main(int argc, char **argv)
 {
@@ -28,6 +42,6 @@ int main(int argc, char **argv)
 	}
 	free(mem1);
 	free(mem2);
-	printf("TODO OK\n");
+	ft_printf("TODO OK\n");
 	return (0);
 }
